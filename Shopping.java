@@ -19,7 +19,8 @@ public class Shopping
 	}
 	
 	
-	
+	//creates the scanner that takes command line input
+	//uses a switch case and for each input of "A" "R" "P" "C" "Q" performs the corresponding method from shopping bag
 	public void run()
 	{
 		while(true)

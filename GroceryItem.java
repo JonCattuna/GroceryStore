@@ -6,6 +6,7 @@ public class GroceryItem
 	private double price;
 	private boolean taxable;
 	
+	//Creates Grocery item objects which are manipulated all through the project taking in name price and taxable
 	public GroceryItem(String name, double price, boolean taxable)
 	{
 		this.name = name;
@@ -23,6 +24,7 @@ public class GroceryItem
 		else
 			return false;
 	}
+	//Formats the output to display the correct amount of decimals and display the price item and tax status
 	public String toString()
 	{
 		String pattern = "$#.00";
