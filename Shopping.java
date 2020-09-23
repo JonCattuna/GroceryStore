@@ -34,26 +34,34 @@ public class Shopping
 			switch(cmdArray[0].toUpperCase())
 			{
 				case "A":
-					System.out.println("Add");
+					System.out.println("Add ");
 					GroceryItem item = parseCommand(cmdArray);
 					shoppingBag.add(item);
 					System.out.println(item.toString());
 					break;
 					
 				case "R":
-					System.out.println("Remove");
+					System.out.println("Remove ");
 					GroceryItem itemRemove = parseCommand(cmdArray);
 					shoppingBag.remove(itemRemove);
 					break;
 					
 				case "P":
+					System.out.println("Print ");
+					//GroceryItem printer = parseCommand(cmdArray);
 					shoppingBag.print();
 					break;
 					
 				case "C":
+					System.out.println("Checking out");
+					//Display total items in cart
+					//display price
+					//display tax
 					break;
 					
 				case "Q":
+					System.out.println("Quit");
+					//Perform same commands as "C" unless bag is empty
 					break;
 					
 				default:
