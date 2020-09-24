@@ -36,4 +36,13 @@ public class GroceryItem
 			return name + ": " + df.format(price) + " : tax free";
 	}
 
+	public double getPrice()
+	{
+		return price;
+	}
+	
+	public boolean isTaxable()
+	{
+		return taxable;
+	}
 }

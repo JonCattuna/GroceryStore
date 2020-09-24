@@ -58,29 +58,41 @@ public class ShoppingBag
 	//reorganize shopping bag array but order doesnt matter because of find method.
 	public boolean remove(GroceryItem item)
 	{
-		int i = 0;
-		
-		for (i = 0; i < size; i++)
+		int itemIndex = find(item);
+		if(itemIndex >= 0)
 		{
-			if(find(item) == i)
-			{
-				
-			}
+			bag[itemIndex] = bag[size-1];
+			bag[size-1] = null;
 		}
 		
-		
+		return false;
 	}
 	
 	//tracks sales price of full cart based on items inside
 	public double salesPrice()
 	{
-		
+		double totalSalesPrice=0;
+		for(GroceryItem item : bag)
+		{
+			if(item != null)
+				totalSalesPrice += item.getPrice();
+		}
+		return totalSalesPrice;
 	}
 	
 	//tracks which items are taxable and which are not and adds tax based on their price
 	public double salesTax()
 	{
-		
+		double totalSalesTax=0;
+		for(GroceryItem item : bag)
+		{
+			if(item != null)
+			{
+				if(item.isTaxable())
+					totalSalesTax += (item.getPrice() * 0.06625);
+			}
+		}
+		return totalSalesTax;
 	}
 	
 	//prints all items in current cart, if empty displays "bag is empty"
@@ -95,7 +107,8 @@ public class ShoppingBag
 			System.out.println("You have " + size + " items in the bag");
 			for(GroceryItem item : bag)
 			{
-				System.out.println(item.toString());
+				if(item != null)
+					System.out.println(item.toString());
 			}
 		}
 	}
