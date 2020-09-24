@@ -19,7 +19,7 @@ public class GroceryItem
 	//pull pieices apart in toString then move them to the other classes
 	public boolean equals(GroceryItem item)
 	{
-		if((name.equals(item.name) && price == item.price && taxable == item.taxable)
+		if((name.equals(item.name) && price == item.price && taxable == item.taxable))
 			return true;
 		else
 			return false;
@@ -27,9 +27,13 @@ public class GroceryItem
 	//Formats the output to display the correct amount of decimals and display the price item and tax status
 	public String toString()
 	{
-		String pattern = "$#.00";
-		DecimalFormat priceFormatter = new DecimalFormat(pattern);
-		return name + " " + Double.toString(price) + " " + Boolean.toString(taxable);
+		DecimalFormat df = new DecimalFormat();
+		df.setMaximumFractionDigits(2);
+		
+		if(taxable)
+			return name + ": " + df.format(price) + " : is taxable";
+		else
+			return name + ": " + df.format(price) + " : tax free";
 	}
 
 }

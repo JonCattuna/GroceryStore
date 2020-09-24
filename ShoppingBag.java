@@ -1,4 +1,3 @@
-
 public class ShoppingBag 
 {
 	private GroceryItem[] bag;
@@ -10,37 +9,49 @@ public class ShoppingBag
 
 	public ShoppingBag()
 	{
-		
+		bag = new GroceryItem[5];
+		size = 0;
 	}
 	
 	//Finds the index of ceratin objects within the shopping bag array
 	//used in every method to save time locating objects
 	private int find(GroceryItem item)
 	{
-		int index = -1;
-		for(int i = 0; i < bag.size(); i++)
+		for(int i = 0; i < size; i++)
 		{
-			if( bag[i].equals(item))
-			{
-				index = i;
-				break;
-			}
-			
+			if(bag[i].equals(item))
+				return i;
 		}
-		return index;
+		return -1;
 	}
 	//Grows the bag size by 5 when it reachs capacity
 	//holds a capacity variable that is changing per item added
-	private int grow()
+	private void grow()
 	{
-		
+		GroceryItem[] temp = new GroceryItem[bag.length + 5];
+
+		for (int i = 0; i < bag.length; i++)
+		{
+			temp[i] = bag[i];
+		}
+		bag = temp;
 	}
 	
 	//adds one item into the shopping bag array and increases the current size of the bag
 	//adds on the end and gets a new index
 	public void add(GroceryItem item)
 	{
-		
+		if(size == bag.length)
+		{
+			grow();
+			bag[size] = item;
+			size++;
+		}
+		else
+		{
+			bag[size] = item;
+			size++;
+		}
 	}
 	
 	//Removes one object from the array and replaces it with the item in the last index
@@ -51,7 +62,7 @@ public class ShoppingBag
 		
 		for (i = 0; i < size; i++)
 		{
-			if(find(item) == bag[i])
+			if(find(item) == i)
 			{
 				
 			}
@@ -75,16 +86,16 @@ public class ShoppingBag
 	//prints all items in current cart, if empty displays "bag is empty"
 	public void print()
 	{
-		if(bag.size() == 0)
+		if(size == 0)
 		{
 			System.out.println("The bag is empty");
 		}
 		else
 		{
-			System.out.println("You have " + bag.size() + " items in the bag");
-			for(item : bag)
+			System.out.println("You have " + size + " items in the bag");
+			for(GroceryItem item : bag)
 			{
-				System.out.println(item.toSTring());
+				System.out.println(item.toString());
 			}
 		}
 	}
