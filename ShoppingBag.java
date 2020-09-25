@@ -27,8 +27,8 @@ public class ShoppingBag
 	
 	/**
 	 * find the index of each item in the shopping bag array
-	 * @param finds the index of the item required
-	 * @return the index
+	 * @param item
+	 * @return i or -1
 	 */
 	private int find(GroceryItem item)
 	{
@@ -41,8 +41,8 @@ public class ShoppingBag
 	}
 	/**
 	 * Grows the bag size by 5 when it reachs capacity and holds a capacity variable that is changing per item added
-	 * @param grows the maximum size of the array
-	 * @return nothing
+	 * 
+	 * 
 	 */
 	private void grow()
 	{
@@ -58,8 +58,8 @@ public class ShoppingBag
 	/**
 	 * adds one item into the shopping bag array and increases the current 
 	 * size of the bag and adds on the end and gets a new index
-	 * @param adds a new item to the shopping bag array
-	 * @return nothing
+	 * @param item
+	 * 
 	 */
 	
 	public void add(GroceryItem item)
@@ -80,8 +80,8 @@ public class ShoppingBag
 	/**
 	 * Removes one object from the array and replaces it with the item in the last index
 	 * reorganize shopping bag array but order doesnt matter because of find method.
-	 * @param finds item in shopping bag 
-	 * @return index of item
+	 * @param item
+	 * @return true or false
 	 */
 	public boolean remove(GroceryItem item)
 	{
@@ -99,8 +99,8 @@ public class ShoppingBag
 	
 	/**
 	 * tracks sales price of full cart based on items inside
-	 * @param takes price of each item adds to total price
-	 * @return total price
+	 * 
+	 * @return totalSalesPrice
 	 */
 	public double salesPrice()
 	{
@@ -116,8 +116,8 @@ public class ShoppingBag
 	
 	/**
 	 * tracks which items are taxable and which are not and adds tax based on their price
-	 * @param tracks which item is taxable
-	 * @return true or false if item is taxable
+	 * 
+	 * @return totalSalesTax
 	 */
 	public double salesTax()
 	{
@@ -135,8 +135,8 @@ public class ShoppingBag
 	
 	/**
 	 * prints all items in current cart, if empty displays "bag is empty"
-	 * @param prints all items in cart
-	 * @return all items in cart
+	 * 
+	 * 
 	 */
 	public void print()
 	{
@@ -158,8 +158,7 @@ public class ShoppingBag
 	
 	/**
 	 * Prints out items when the user tries to check out
-	 * @param takes item if they exist output them
-	 * @return string of items checking out
+	 * 
 	 */
 	public void checkoutPrint()
 	{
@@ -172,8 +171,8 @@ public class ShoppingBag
 	
 	/**
 	 * gets the size of the array
-	 * @param takes the array and outputs the size of it
-	 * @return size of array
+	 *
+	 * @return size
 	 */
 	public int getSize()
 	{
@@ -182,8 +181,7 @@ public class ShoppingBag
 	
 	/**
 	 * clears the array and empties the shopping bag
-	 * @param takes the shopping bag array and clears all indexs
-	 * @return empty shopping bag array
+	 * 
 	 */
 	public void emptyShoppingBag() 
 	{

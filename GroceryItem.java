@@ -20,7 +20,7 @@ public class GroceryItem
 	 * @param name
 	 * @param price
 	 * @param taxable
-	 * @return nothing
+	 * 
 	 */
 	public GroceryItem(String name, double price, boolean taxable)
 	{
@@ -33,8 +33,8 @@ public class GroceryItem
 	/**
 	 * Take the Scan and will have a price/name/taxable 
 	 * and pull pieces apart in toString then move them to the other classes
-	 * @param item and equals method
-	 * @return true or false if it is equal
+	 * @param item
+	 * @return boolean
 	 */
 	public boolean equals(GroceryItem item)
 	{
@@ -45,8 +45,8 @@ public class GroceryItem
 	}
 	/**
 	 * Formats the output to display the correct amount of decimals and display the price item and tax status
-	 * @param The new to string that formats the output
-	 * @return a new format for output
+	 * 
+	 * @return string
 	 */
 	public String toString()
 	{
@@ -61,7 +61,7 @@ public class GroceryItem
 	
 	/**
 	 * Price getter
-	 * @param price
+	 *
 	 * @return price
 	 */
 	public double getPrice()
@@ -71,8 +71,8 @@ public class GroceryItem
 	
 	/**
 	 * takes in the price and formats it for output
-	 * @param price
-	 * @return price formatted
+	 * 
+	 * @return price 
 	 */
 	public String getStringPrice()
 	{
@@ -83,8 +83,8 @@ public class GroceryItem
 	
 	/**
 	 * checks taxable
-	 * @param taxable
-	 * @return true or false if taxable
+	 * 
+	 * @return taxable
 	 */
 	public boolean isTaxable()
 	{
@@ -93,7 +93,7 @@ public class GroceryItem
 	
 	/**
 	 * Name getter
-	 * @param name
+	 * 
 	 * @return name
 	 */
 	public String getName()
