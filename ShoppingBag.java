@@ -1,3 +1,5 @@
+import java.text.DecimalFormat;
+
 public class ShoppingBag 
 {
 	private GroceryItem[] bag;
@@ -15,6 +17,10 @@ public class ShoppingBag
 	
 	//Finds the index of ceratin objects within the shopping bag array
 	//used in every method to save time locating objects
+	/**
+	 * @param item
+	 * @return
+	 */
 	private int find(GroceryItem item)
 	{
 		for(int i = 0; i < size; i++)
@@ -56,6 +62,18 @@ public class ShoppingBag
 	
 	//Removes one object from the array and replaces it with the item in the last index
 	//reorganize shopping bag array but order doesnt matter because of find method.
+	/**
+	 * @param item
+	 * @return
+	 */
+	/**
+	 * @param item
+	 * @return
+	 */
+	/**
+	 * @param item
+	 * @return
+	 */
 	public boolean remove(GroceryItem item)
 	{
 		int itemIndex = find(item);
@@ -63,6 +81,8 @@ public class ShoppingBag
 		{
 			bag[itemIndex] = bag[size-1];
 			bag[size-1] = null;
+			size--;
+			return true;
 		}
 		
 		return false;
@@ -77,6 +97,7 @@ public class ShoppingBag
 			if(item != null)
 				totalSalesPrice += item.getPrice();
 		}
+		
 		return totalSalesPrice;
 	}
 	
@@ -100,17 +121,38 @@ public class ShoppingBag
 	{
 		if(size == 0)
 		{
-			System.out.println("The bag is empty");
+			System.out.println("The bag is empty!");
 		}
 		else
 		{
-			System.out.println("You have " + size + " items in the bag");
+			System.out.println("**You have " + size + " items in the bag.");
 			for(GroceryItem item : bag)
 			{
 				if(item != null)
 					System.out.println(item.toString());
 			}
+			System.out.println("**End of list");
+		}
+	}
+	
+	public void checkoutPrint()
+	{
+		for(GroceryItem item : bag)
+		{
+			if(item != null)
+				System.out.println(item.toString());
 		}
 	}
 
+	public int getSize()
+	{
+		return size;
+	}
+	
+	public void emptyShoppingBag() 
+	{
+		for(int i = 0; i < bag.length; i++)
+			bag[i] = null;
+		size = 0;
+	}
 }

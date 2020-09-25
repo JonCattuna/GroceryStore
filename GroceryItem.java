@@ -31,9 +31,9 @@ public class GroceryItem
 		df.setMaximumFractionDigits(2);
 		
 		if(taxable)
-			return name + ": " + df.format(price) + " : is taxable";
+			return "·" + name + ": $" + df.format(price) + " : is taxable";
 		else
-			return name + ": " + df.format(price) + " : tax free";
+			return "·" + name + ": $" + df.format(price) + " : tax free";
 	}
 
 	public double getPrice()
@@ -41,8 +41,20 @@ public class GroceryItem
 		return price;
 	}
 	
+	public String getStringPrice()
+	{
+		DecimalFormat df = new DecimalFormat();
+		df.setMaximumFractionDigits(2);
+		return df.format(price);
+	}
+	
 	public boolean isTaxable()
 	{
 		return taxable;
+	}
+	
+	public String getName()
+	{
+		return name;
 	}
 }
