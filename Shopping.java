@@ -1,15 +1,29 @@
+/**
+ * This class hold the scanner and takes in the users input
+ * controls the output of the project and takes in all user input
+ * @author Jonathan Cattuna, George Job
+ */
+
 import java.util.Scanner;
 
 public class Shopping 
 {
 	private ShoppingBag shoppingBag;
 	
+	/**
+	 * Creates new shopping bag
+	 */
 	public Shopping()
 	{
 		shoppingBag = new ShoppingBag();
 	}
-	//Create scanner and take in user input
-	//send it over to grocery item as a string
+	
+	/**
+	 * Create scanner and take in user input
+	 * send it over to grocery item as a string
+	 * @param cmdArray: parsed input from user
+	 * @return GroceryItem created from user input
+	 */
 	private GroceryItem parseCommand(String[] cmdArray)
 	{
 		String name = cmdArray[1];
@@ -18,6 +32,9 @@ public class Shopping
 		return new GroceryItem(name, price, taxable);
 	}
 	
+	/**
+	 * Checks out the shopping bag and displays the price and items
+	 */
 	public void checkout()
 	{
 		int shoppingBagSize = shoppingBag.getSize();
@@ -25,9 +42,9 @@ public class Shopping
 		{
 			System.out.println("**Checking out " + shoppingBagSize + " item(s):");
 			shoppingBag.checkoutPrint();
-			System.out.printf("*Sales total: %.2f\n", shoppingBag.salesPrice());
-			System.out.printf("*Sales tax: %.2f\n", shoppingBag.salesTax());
-			System.out.printf("*Total amount paid: %.2f\n", (shoppingBag.salesPrice() + shoppingBag.salesTax()));
+			System.out.printf("*Sales total: $%.2f\n", shoppingBag.salesPrice());
+			System.out.printf("*Sales tax: $%.2f\n", shoppingBag.salesTax());
+			System.out.printf("*Total amount paid: $%.2f\n", (shoppingBag.salesPrice() + shoppingBag.salesTax()));
 			shoppingBag.emptyShoppingBag();
 		}
 		else
@@ -36,8 +53,9 @@ public class Shopping
 		}
 	}
 	
-	//creates the scanner that takes command line input
-	//uses a switch case and for each input of "A" "R" "P" "C" "Q" performs the corresponding method from shopping bag
+	/**
+	 * creates the scanner that takes command line input uses a switch case and for each input of "A" "R" "P" "C" "Q" performs the corresponding method from shopping bag
+	 */
 	public void run()
 	{
 		System.out.println("Let's start shopping!");
@@ -47,19 +65,16 @@ public class Shopping
 			Scanner keyboard = new Scanner(System.in);
 			String cmd = keyboard.nextLine();
 			String[] cmdArray = cmd.split(" ");
-			//System.out.println("test: "+cmdArray[0].toUpperCase());
 			
 			switch(cmdArray[0])
 			{
 				case "A":
-					System.out.println("Add ");
 					GroceryItem item = parseCommand(cmdArray);
 					shoppingBag.add(item);
 					System.out.println(item.getName() + " added to the bag.");
 					break;
 					
 				case "R":
-					System.out.println("Remove ");
 					GroceryItem itemRemove = parseCommand(cmdArray);
 					if(shoppingBag.remove(itemRemove))
 						System.out.println(itemRemove.getName() + " " + itemRemove.getStringPrice() + " removed.");
@@ -68,8 +83,6 @@ public class Shopping
 					break;
 					
 				case "P":
-					System.out.println("Print ");
-					//GroceryItem printer = parseCommand(cmdArray);
 					shoppingBag.print();
 					break;
 					
@@ -78,8 +91,6 @@ public class Shopping
 					break;
 					
 				case "Q":
-					System.out.println("Quit");
-					//Perform same commands as "C" unless bag is empty
 					if(shoppingBag.getSize() > 0)
 					{
 						checkout();
