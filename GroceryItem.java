@@ -1,3 +1,12 @@
+/**
+ * This class is the object that is used in all other classes
+ * also controls the format of the output
+ * rewitten equals method and tostring
+ * @author Jonathan Cattuna, George Job
+ */
+
+
+
 import java.text.DecimalFormat;
 
 public class GroceryItem 
@@ -6,7 +15,13 @@ public class GroceryItem
 	private double price;
 	private boolean taxable;
 	
-	//Creates Grocery item objects which are manipulated all through the project taking in name price and taxable
+	/**
+	 * Creates Grocery item objects which are manipulated all through the project taking in name price and taxable
+	 * @param name
+	 * @param price
+	 * @param taxable
+	 * @return nothing
+	 */
 	public GroceryItem(String name, double price, boolean taxable)
 	{
 		this.name = name;
@@ -15,21 +30,74 @@ public class GroceryItem
 	}
 	
 	
-	//Take the Scan and will have a price/name/taxable
-	//pull pieices apart in toString then move them to the other classes
+	/**
+	 * Take the Scan and will have a price/name/taxable 
+	 * and pull pieces apart in toString then move them to the other classes
+	 * @param item and equals method
+	 * @return true or false if it is equal
+	 */
 	public boolean equals(GroceryItem item)
 	{
-		if((name.equals(item.name) && price == item.price && taxable == item.taxable)
+		if((name.equals(item.name) && price == item.price && taxable == item.taxable))
 			return true;
 		else
 			return false;
 	}
-	//Formats the output to display the correct amount of decimals and display the price item and tax status
+	/**
+	 * Formats the output to display the correct amount of decimals and display the price item and tax status
+	 * @param The new to string that formats the output
+	 * @return a new format for output
+	 */
 	public String toString()
 	{
-		String pattern = "$#.00";
-		DecimalFormat priceFormatter = new DecimalFormat(pattern);
-		return name + " " + Double.toString(price) + " " + Boolean.toString(taxable);
+		DecimalFormat df = new DecimalFormat();
+		df.setMaximumFractionDigits(2);
+		
+		if(taxable)
+			return "·" + name + ": $" + df.format(price) + " : is taxable";
+		else
+			return "·" + name + ": $" + df.format(price) + " : tax free";
 	}
-
+	
+	/**
+	 * Price getter
+	 * @param price
+	 * @return price
+	 */
+	public double getPrice()
+	{
+		return price;
+	}
+	
+	/**
+	 * takes in the price and formats it for output
+	 * @param price
+	 * @return price formatted
+	 */
+	public String getStringPrice()
+	{
+		DecimalFormat df = new DecimalFormat();
+		df.setMaximumFractionDigits(2);
+		return df.format(price);
+	}
+	
+	/**
+	 * checks taxable
+	 * @param taxable
+	 * @return true or false if taxable
+	 */
+	public boolean isTaxable()
+	{
+		return taxable;
+	}
+	
+	/**
+	 * Name getter
+	 * @param name
+	 * @return name
+	 */
+	public String getName()
+	{
+		return name;
+	}
 }
